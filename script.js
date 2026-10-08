@@ -191,8 +191,8 @@ function speakJourneyQuote() {
 
   speech.voice = femaleVoice;
   speech.lang = "en-GB";
-  speech.rate = 1.15;
-  speech.pitch = 1.4;
+  speech.rate = 1.05;
+  speech.pitch = 1.25;
   speech.volume = 1;
 
   speechSynthesis.cancel();
@@ -628,3 +628,5 @@ speechSynthesis.addEventListener(
 
   }
 );
+
+
