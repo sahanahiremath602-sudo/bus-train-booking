@@ -136,5 +136,15 @@
   <div id="toast" class="toast"></div>
 
   <script src="script.js"></script>
+  <script>
+const bgMusic = document.getElementById("bgMusic");
+
+document.addEventListener("click", function () {
+    bgMusic.volume = 0.5;
+    bgMusic.play().catch(error => {
+        console.log("Audio could not play:", error);
+    });
+});
+</script>
 </body>
 </html>
