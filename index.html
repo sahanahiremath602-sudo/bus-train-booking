@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,10 +15,17 @@
 
 <audio id="bgMusic" src="./halloween_2019.mp3" loop preload="auto"></audio>
 
+  <!-- Music Button -->
+
+<button id="musicButton" type="button">🎵 PLAY MUSIC</button>
+
   <header class="navbar">
-    <div class="brand">JOURNEY<span>+</span></div>
 
 ```
+<div class="brand">
+  JOURNEY<span>+</span>
+</div>
+
 <nav>
   <button class="nav-btn active" data-page="home">Home</button>
   <button class="nav-btn" data-page="book">Book Ticket</button>
@@ -34,6 +42,7 @@
 <section id="home" class="page active">
 
   <div class="hero">
+
     <div class="hero-content">
 
       <p class="eyebrow">TRAVEL • BOOK • GO</p>
@@ -48,6 +57,7 @@
       </p>
 
       <div class="hero-buttons">
+
         <button class="primary-btn" data-page="book">
           BOOK A TICKET
         </button>
@@ -55,29 +65,52 @@
         <button class="secondary-btn" data-page="view">
           VIEW BOOKING
         </button>
+
       </div>
 
     </div>
+
   </div>
+
 
   <div class="features">
 
     <div class="feature-card">
+
       <div class="feature-icon">🚌</div>
+
       <h3>Bus Booking</h3>
-      <p>Choose your route and book your bus ticket easily.</p>
+
+      <p>
+        Choose your route and book your bus ticket easily.
+      </p>
+
     </div>
 
+
     <div class="feature-card">
+
       <div class="feature-icon">🚆</div>
+
       <h3>Train Booking</h3>
-      <p>Select a train route and confirm your journey.</p>
+
+      <p>
+        Select a train route and confirm your journey.
+      </p>
+
     </div>
 
+
     <div class="feature-card">
+
       <div class="feature-icon">🎫</div>
+
       <h3>Easy Management</h3>
-      <p>View or cancel your active booking whenever you need.</p>
+
+      <p>
+        View or cancel your active booking whenever you need.
+      </p>
+
     </div>
 
   </div>
@@ -105,15 +138,28 @@
     <div class="transport-choice">
 
       <button class="transport-card selected" data-type="bus">
+
         <span>🚌</span>
+
         <strong>BUS</strong>
-        <small>Comfortable road travel</small>
+
+        <small>
+          Comfortable road travel
+        </small>
+
       </button>
 
+
       <button class="transport-card" data-type="train">
+
         <span>🚆</span>
+
         <strong>TRAIN</strong>
-        <small>Fast railway travel</small>
+
+        <small>
+          Fast railway travel
+        </small>
+
       </button>
 
     </div>
@@ -125,6 +171,7 @@
 
         <label>
           Passenger Name
+
           <input
             id="passengerName"
             type="text"
@@ -136,6 +183,7 @@
 
         <label>
           Travel Date
+
           <input
             id="travelDate"
             type="date"
@@ -146,12 +194,18 @@
 
         <label>
           Route
-          <select id="route" required></select>
+
+          <select
+            id="route"
+            required
+          ></select>
+
         </label>
 
 
         <label>
           Number of Tickets
+
           <input
             id="tickets"
             type="number"
@@ -160,6 +214,7 @@
             value="1"
             required
           >
+
         </label>
 
       </div>
@@ -168,13 +223,28 @@
       <div class="fare-box">
 
         <div>
-          <span>Price per ticket</span>
-          <strong id="price">₹0</strong>
+
+          <span>
+            Price per ticket
+          </span>
+
+          <strong id="price">
+            ₹0
+          </strong>
+
         </div>
 
+
         <div>
-          <span>Total amount</span>
-          <strong id="total">₹0</strong>
+
+          <span>
+            Total amount
+          </span>
+
+          <strong id="total">
+            ₹0
+          </strong>
+
         </div>
 
       </div>
@@ -198,15 +268,20 @@
 
   <div class="section-heading">
 
-    <p class="eyebrow">YOUR TICKET</p>
+    <p class="eyebrow">
+      YOUR TICKET
+    </p>
 
-    <h2>View Booking</h2>
+    <h2>
+      View Booking
+    </h2>
 
     <p>
       See the details of your current booking.
     </p>
 
   </div>
+
 
   <div
     id="viewBooking"
@@ -220,15 +295,20 @@
 
   <div class="section-heading">
 
-    <p class="eyebrow">MANAGE YOUR JOURNEY</p>
+    <p class="eyebrow">
+      MANAGE YOUR JOURNEY
+    </p>
 
-    <h2>Cancel Booking</h2>
+    <h2>
+      Cancel Booking
+    </h2>
 
     <p>
       Cancel your active ticket when needed.
     </p>
 
   </div>
+
 
   <div
     id="cancelBooking"
@@ -250,7 +330,10 @@
 
   </footer>
 
-  <div id="toast" class="toast"></div>
+  <div
+    id="toast"
+    class="toast"
+  ></div>
 
   <script src="./script.js"></script>
 
@@ -259,23 +342,37 @@
     const bgMusic =
       document.getElementById("bgMusic");
 
-    document.addEventListener("click", function () {
+    const musicButton =
+      document.getElementById("musicButton");
 
-      bgMusic.volume = 0.5;
 
-      bgMusic.play()
-        .catch(error => {
+    musicButton.addEventListener(
+      "click",
+      async function () {
 
-          console.log(
-            "Audio could not play:",
-            error
-          );
+        try {
 
-        });
+          await bgMusic.play();
 
-    });
+          musicButton.textContent =
+            "🎵 MUSIC PLAYING";
+
+        }
+
+        catch (error) {
+
+          console.log(error);
+
+          musicButton.textContent =
+            "❌ MUSIC ERROR";
+
+        }
+
+      }
+    );
 
   </script>
 
 </body>
+
 </html>
