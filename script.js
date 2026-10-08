@@ -1,4 +1,4 @@
-```js
+
 const routes = {
   bus: [
     { name: "Bengaluru → Mysuru", from: "Bengaluru", to: "Mysuru", price: 180 },
@@ -26,7 +26,9 @@ const toast = document.getElementById("toast");
 
 
 function getBooking() {
-  return JSON.parse(localStorage.getItem("busTrainBooking"));
+  return JSON.parse(
+    localStorage.getItem("busTrainBooking")
+  );
 }
 
 
@@ -101,9 +103,7 @@ function showPage(pageId) {
 document.querySelectorAll("[data-page]").forEach(button => {
 
   button.addEventListener("click", () => {
-
     showPage(button.dataset.page);
-
   });
 
 });
@@ -112,7 +112,6 @@ document.querySelectorAll("[data-page]").forEach(button => {
 function loadRoutes() {
 
   routeSelect.innerHTML = "";
-
 
   routes[selectedType].forEach((route, index) => {
 
@@ -128,9 +127,7 @@ function loadRoutes() {
 
   });
 
-
   updateFare();
-
 }
 
 
@@ -146,13 +143,10 @@ document
           c.classList.remove("selected")
         );
 
-
       card.classList.add("selected");
-
 
       selectedType =
         card.dataset.type;
-
 
       loadRoutes();
 
@@ -168,14 +162,11 @@ function updateFare() {
       Number(routeSelect.value) || 0
     ];
 
-
   const tickets =
     Number(ticketsInput.value) || 1;
 
-
   priceElement.textContent =
     `₹${route.price}`;
-
 
   totalElement.textContent =
     `₹${route.price * tickets}`;
@@ -203,16 +194,13 @@ ticketsInput.addEventListener(
 function speakJourneyQuote() {
 
   /*
-    Lower background music while
-    the girl is speaking.
+    Lower the background music
+    while the girl is speaking.
   */
 
-  if (
-    typeof bgMusic !== "undefined" &&
-    bgMusic
-  ) {
+  if (window.bgMusic) {
 
-    bgMusic.volume = 0.12;
+    window.bgMusic.volume = 0.12;
 
   }
 
@@ -243,17 +231,13 @@ function speakJourneyQuote() {
     "en-GB";
 
 
-  /*
-    🎙️ VOICE SETTINGS
-  */
+  /* 🎙️ VOICE SETTINGS */
 
   speech.rate =
     1.05;
 
-
   speech.pitch =
     1.25;
-
 
   speech.volume =
     1;
@@ -270,12 +254,10 @@ function speakJourneyQuote() {
   speech.onend =
     function () {
 
-      if (
-        typeof bgMusic !== "undefined" &&
-        bgMusic
-      ) {
+      if (window.bgMusic) {
 
-        bgMusic.volume = 0.5;
+        window.bgMusic.volume =
+          0.5;
 
       }
 
@@ -472,13 +454,11 @@ function bookingHTML(
         </span>
 
         <span>
-
           ${
             booking.type === "BUS"
               ? "🚌 Bus"
               : "🚆 Train"
           }
-
         </span>
 
       </div>
@@ -623,30 +603,18 @@ function bookingHTML(
 }
 
 
-function escapeHTML(
-  value
-) {
+function escapeHTML(value) {
 
   return value.replace(
     /[&<>"']/g,
 
     char =>
       ({
-        "&":
-          "&amp;",
-
-        "<":
-          "&lt;",
-
-        ">":
-          "&gt;",
-
-        '"':
-          "&quot;",
-
-        "'":
-          "&#039;"
-
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
       }[char])
 
   );
@@ -825,4 +793,4 @@ speechSynthesis.addEventListener(
 
   }
 );
-```
+
