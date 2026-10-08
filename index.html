@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bus & Train Booking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">JOURNEY<span>+</span></div>
+    <nav>
+      <button class="nav-btn active" data-page="home">Home</button>
+      <button class="nav-btn" data-page="book">Book Ticket</button>
+      <button class="nav-btn" data-page="view">View Booking</button>
+      <button class="nav-btn" data-page="cancel">Cancel Booking</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">TRAVEL • BOOK • GO</p>
+          <h1>BUS & TRAIN<br><span>BOOKING SYSTEM</span></h1>
+          <p class="hero-text">Plan your journey, book your ticket, and manage your booking in one simple place.</p>
+          <div class="hero-buttons">
+            <button class="primary-btn" data-page="book">BOOK A TICKET</button>
+            <button class="secondary-btn" data-page="view">VIEW BOOKING</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <div class="feature-icon">🚌</div>
+          <h3>Bus Booking</h3>
+          <p>Choose your route and book your bus ticket easily.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚆</div>
+          <h3>Train Booking</h3>
+          <p>Select a train route and confirm your journey.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎫</div>
+          <h3>Easy Management</h3>
+          <p>View or cancel your active booking whenever you need.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" class="page">
+      <div class="section-heading">
+        <p class="eyebrow">BOOK YOUR JOURNEY</p>
+        <h2>Choose Bus or Train</h2>
+        <p>Fill in your details and confirm your ticket.</p>
+      </div>
+
+      <div class="booking-layout">
+        <div class="transport-choice">
+          <button class="transport-card selected" data-type="bus">
+            <span>🚌</span>
+            <strong>BUS</strong>
+            <small>Comfortable road travel</small>
+          </button>
+          <button class="transport-card" data-type="train">
+            <span>🚆</span>
+            <strong>TRAIN</strong>
+            <small>Fast railway travel</small>
+          </button>
+        </div>
+
+        <form id="bookingForm" class="booking-form">
+          <div class="form-grid">
+            <label>
+              Passenger Name
+              <input id="passengerName" type="text" placeholder="Enter your name" required>
+            </label>
+
+            <label>
+              Travel Date
+              <input id="travelDate" type="date" required>
+            </label>
+
+            <label>
+              Route
+              <select id="route" required></select>
+            </label>
+
+            <label>
+              Number of Tickets
+              <input id="tickets" type="number" min="1" max="10" value="1" required>
+            </label>
+          </div>
+
+          <div class="fare-box">
+            <div>
+              <span>Price per ticket</span>
+              <strong id="price">₹0</strong>
+            </div>
+            <div>
+              <span>Total amount</span>
+              <strong id="total">₹0</strong>
+            </div>
+          </div>
+
+          <button class="primary-btn full-width" type="submit">CONFIRM BOOKING</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="view" class="page">
+      <div class="section-heading">
+        <p class="eyebrow">YOUR TICKET</p>
+        <h2>View Booking</h2>
+        <p>See the details of your current booking.</p>
+      </div>
+      <div id="viewBooking" class="result-area"></div>
+    </section>
+
+    <section id="cancel" class="page">
+      <div class="section-heading">
+        <p class="eyebrow">MANAGE YOUR JOURNEY</p>
+        <h2>Cancel Booking</h2>
+        <p>Cancel your active ticket when needed.</p>
+      </div>
+      <div id="cancelBooking" class="result-area"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Bus & Train Booking System • Student Project</p>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
